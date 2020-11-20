@@ -25,7 +25,7 @@
 - main.go config.Init()
 
 ### 三、初始化日志文件
-- logrus初始化日志
+- 添加配置，logrus初始化日志
     ```golang
     func Init() {
         // 设置日志格式为json格式
@@ -53,8 +53,7 @@
 - main.go log.Init()
 
 ### 四、初始化db
-
-- gorm初始化mysql
+- 添加配置，gorm初始化mysql
     ```golang
     var DB *gorm.DB
     var err error
@@ -86,8 +85,35 @@
 - main.go database.Init()
 
 
-
 ### 五、初始化redis
-
+- 添加配置，redisgo初始化
+    ```golang
+    var RedisClient *redis.Pool
+    func Init() {
+        // 从配置文件获取redis的ip以及db
+        RedisHost := viper.GetString("redis.addr")
+        RedisPassword := viper.GetString("redis.password")
+        redisDB := viper.GetInt("redis.db")
+        MaxIdle := viper.GetInt("redis.MaxIdle")
+        MaxActive := viper.GetInt("redis.MaxActive")
+        IdleTimeout := viper.GetInt("redis.IdleTimeout")
+        // 建立连接池
+        RedisClient = &redis.Pool{
+            MaxIdle:     MaxIdle,   /*最大的空闲连接数*/
+            MaxActive:   MaxActive, /*最大的激活连接数*/
+            IdleTimeout: time.Duration(IdleTimeout) * time.Second,
+            Dial: func() (redis.Conn, error) {
+                c, err := redis.Dial("tcp", RedisHost, redis.DialPassword(RedisPassword))
+                if err != nil {
+                    return nil, err
+                }
+                // 选择db
+                c.Do("SELECT", redisDB)
+                return c, nil
+            },
+        }
+    }
+    ```
+- main.go cache.Init()
 
 ### 六、初始化mq

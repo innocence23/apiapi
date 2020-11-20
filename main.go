@@ -1,6 +1,7 @@
 package main
 
 import (
+	"apiapi/pkg/cache"
 	"apiapi/pkg/config"
 	"apiapi/pkg/database"
 	"apiapi/pkg/xlog"
@@ -18,6 +19,7 @@ func main() {
 	database.Init()
 
 	//初始化redis
+	cache.Init()
 
 	//初始化mq
 

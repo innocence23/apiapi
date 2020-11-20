@@ -13,4 +13,10 @@ db:
   username: root
   password: root
 redis:
+  addr: 127.0.0.1:6379
+  password: 
+  db: 1
+  MaxIdle: 3  #最大的空闲连接数
+  MaxActive: 10 #最大的激活连接数
+  IdleTimeout: 180
 mq:
