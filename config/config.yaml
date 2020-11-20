@@ -1,6 +1,6 @@
 runmode: debug               # 开发模式, debug, release, test
 port: :9090                  # HTTP绑定端口
-env: production
+#env: production
 log:
   writers: file,stdout
   logger_level: DEBUG
@@ -19,4 +19,7 @@ redis:
   MaxIdle: 3  #最大的空闲连接数
   MaxActive: 10 #最大的激活连接数
   IdleTimeout: 180
-mq:
+nsq:
+  addr: 127.0.0.1:4150
+  topic: test
+  channel: test-channel
