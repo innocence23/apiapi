@@ -1,3 +1,9 @@
+# 参考文档
+- [youtube go api](https://www.youtube.com/playlist?list=PLKmlCa2HUPq-K7hIyHGbDoYs6YZBM8yA-)
+- [youtube go api code](https://github.com/herusdianto/gorm_crud_example)
+- [go api example](https://hellokoding.com/crud-restful-apis-with-go-modules-wire-gin-gorm-and-mysql/)
+
+
 ## 模块
 - git管理
 - curd操作

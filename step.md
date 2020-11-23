@@ -1,3 +1,10 @@
+# 参考文档
+- [youtube go api](https://www.youtube.com/playlist?list=PLKmlCa2HUPq-K7hIyHGbDoYs6YZBM8yA-)
+- [youtube go api code](https://github.com/herusdianto/gorm_crud_example)
+- [go api example](https://hellokoding.com/crud-restful-apis-with-go-modules-wire-gin-gorm-and-mysql/)
+
+
+
 ### 一、初始化项目 及目录机构
 - git init
 - go mod init zyf/api
@@ -198,6 +205,16 @@
 - 创建model
 - 创建repository
 - 创建service
+- dto
+- controller
+
+
+
+### 七、安装自动注入 wire
+- go get github.com/google/wire/cmd/wire
+
+
+
 
 ### 七、路由模块
 
