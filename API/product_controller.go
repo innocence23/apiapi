@@ -4,11 +4,11 @@ import (
 	. "apiapi/dto"
 	"apiapi/model"
 	"apiapi/service"
-	"log"
 	"net/http"
 	"strconv"
 
 	"github.com/gin-gonic/gin"
+	"github.com/sirupsen/logrus"
 )
 
 type ProductAPI struct {
@@ -36,8 +36,8 @@ func (p *ProductAPI) Create(c *gin.Context) {
 	var productDTO ProductDTO
 	err := c.BindJSON(&productDTO)
 	if err != nil {
-		log.Fatalln(err)
 		c.Status(http.StatusBadRequest)
+		logrus.Error(err)
 		return
 	}
 
@@ -50,8 +50,8 @@ func (p *ProductAPI) Update(c *gin.Context) {
 	var productDTO ProductDTO
 	err := c.BindJSON(&productDTO)
 	if err != nil {
-		log.Fatalln(err)
 		c.Status(http.StatusBadRequest)
+		logrus.Error(err)
 		return
 	}
 

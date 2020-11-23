@@ -1,1 +1,7 @@
-{"file":"/Users/zhangyunfei/Desktop/apiapi/main.go:19","func":"main.main","level":"warning","msg":"hello warning","time":"2020-11-20T12:00:16+08:00"}
+{"file":"/Users/zhangyunfei/Desktop/apiapi/API/product_controller.go:54","func":"apiapi/API.(*ProductAPI).Update","level":"error","msg":"EOF","time":"2020-11-23T14:51:18+08:00"}
+{"file":"/Users/zhangyunfei/Desktop/apiapi/API/product_controller.go:54","func":"apiapi/API.(*ProductAPI).Update","level":"error","msg":"EOF","time":"2020-11-23T14:51:18+08:00"}
+{"file":"/Users/zhangyunfei/Desktop/apiapi/API/product_controller.go:54","func":"apiapi/API.(*ProductAPI).Update","level":"error","msg":"EOF","time":"2020-11-23T14:51:19+08:00"}
+{"file":"/Users/zhangyunfei/Desktop/apiapi/API/product_controller.go:40","func":"apiapi/API.(*ProductAPI).Create","level":"error","msg":"EOF","time":"2020-11-23T14:51:21+08:00"}
+{"file":"/Users/zhangyunfei/Desktop/apiapi/API/product_controller.go:40","func":"apiapi/API.(*ProductAPI).Create","level":"error","msg":"EOF","time":"2020-11-23T14:51:21+08:00"}
+{"file":"/Users/zhangyunfei/Desktop/apiapi/API/product_controller.go:40","func":"apiapi/API.(*ProductAPI).Create","level":"error","msg":"EOF","time":"2020-11-23T14:51:21+08:00"}
+{"file":"/Users/zhangyunfei/Desktop/apiapi/API/product_controller.go:40","func":"apiapi/API.(*ProductAPI).Create","level":"error","msg":"EOF","time":"2020-11-23T14:51:21+08:00"}
