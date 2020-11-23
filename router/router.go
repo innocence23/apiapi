@@ -1,14 +1,21 @@
 package router
 
-import "github.com/gin-gonic/gin"
+import (
+	"apiapi/pkg/database"
+
+	"github.com/gin-gonic/gin"
+)
 
 // Init router
 func Init() *gin.Engine {
 	r := gin.Default()
-	r.GET("/ping", func(c *gin.Context) {
-		c.JSON(200, gin.H{
-			"message": "pong",
-		})
-	})
+
+	productAPI := initProductAPI(database.DB)
+	r.GET("/products", productAPI.FindAll)
+	r.GET("/products/:id", productAPI.FindByID)
+	r.POST("/products", productAPI.Create)
+	r.PUT("/products/:id", productAPI.Update)
+	r.DELETE("/products/:id", productAPI.Delete)
+
 	return r
 }
