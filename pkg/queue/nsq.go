@@ -1,19 +1,19 @@
 package queue
 
 import (
+	"apiapi/pkg/config"
 	"fmt"
 	"strconv"
 	"time"
 
 	"github.com/nsqio/go-nsq"
-	"github.com/spf13/viper"
 )
 
 // nsq发布消息
 func InitProducer(msgBody string) {
 	// 默认配置
-	var Host = viper.GetString("nsq.addr")
-	var Topic = viper.GetString("nsq.topic")
+	var Host = config.C.NSQ.Addr
+	var Topic = config.C.NSQ.Topic
 	// 新建生产者
 	p, err := nsq.NewProducer(Host, nsq.NewConfig())
 	if err != nil {
@@ -34,9 +34,9 @@ func (*ConsumerT) HandleMessage(msg *nsq.Message) error {
 }
 
 func InitConsumer() {
-	var Host = viper.GetString("nsq.addr")
-	var Topic = viper.GetString("nsq.topic")
-	var Channel = viper.GetString("nsq.channel")
+	var Host = config.C.NSQ.Addr
+	var Topic = config.C.NSQ.Topic
+	var Channel = config.C.NSQ.Channel
 	// 新建一个消费者
 	cfg := nsq.NewConfig()
 	//设置重连时间

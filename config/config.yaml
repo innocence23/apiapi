@@ -1,24 +1,34 @@
 runmode: debug               # 开发模式, debug, release, test
 port: :9090                  # HTTP绑定端口
-#env: production
+env:  #production
 log:
   writers: file,stdout
-  logger_level: DEBUG
-  logger_file: runtime/log/server.log
-  log_format_text: false
+  ## 日志级别(0 panic 1:fatal 2:error,3:warn,4:info,5:debug,6:trace)
+  level: 3 
+  test_level: 4  # 测试环境级别
+  file: runtime/log/server.log
+  format_text: false
 db:
+  # 是否开启调试模式
+  debug: true
   type: mysql
   dbname: goapiapi
   addr: 127.0.0.1:3306
   username: root
   password: root
+  parameters: charset=utf8mb4&parseTime=True&loc=Local&allowNativePasswords=true
+  max_lifetime: 7200 # 设置连接可以重用的最长时间(单位：秒)
+  max_open_conns: 150 # 设置数据库的最大打开连接数
+  max_idle_conns: 50 # 设置空闲连接池中的最大连接数
+  table_prefix: "g_" # 数据库表名前缀
+  enable_auto_migrate: true # 是否启用自动映射数据库表结构
 redis:
   addr: 127.0.0.1:6379
   password: 
   db: 1
-  MaxIdle: 3  #最大的空闲连接数
-  MaxActive: 10 #最大的激活连接数
-  IdleTimeout: 180
+  max_idle: 3  #最大的空闲连接数
+  max_active: 10 #最大的激活连接数
+  idle_timeout: 180
 nsq:
   addr: 127.0.0.1:4150
   topic: test
