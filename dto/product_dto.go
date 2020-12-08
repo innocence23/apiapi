@@ -3,9 +3,16 @@ package dto
 import "apiapi/model"
 
 type ProductDTO struct {
-	ID		uint 	`json:"id,string,omitempty"`
-	Code	string	`json:"code"`
-	Price	uint	`json:"price,string"`
+	ID    uint   `json:"id,string,omitempty"`
+	Code  string `json:"code"`
+	Price uint   `json:"price,string"`
+}
+
+type ProductQueryParam struct {
+	Code       string `json:"code,omitempty"`
+	Price      uint   `json:"price,omitempty"`
+	Pagination `json:"pagination,omitempty"`
+	OrderField `json:"order_field,omitempty"`
 }
 
 func ToProduct(productDTO ProductDTO) model.Product {

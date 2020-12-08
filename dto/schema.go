@@ -1,4 +1,4 @@
-package model
+package dto
 
 // Pagination 分页查询条件
 type Pagination struct {

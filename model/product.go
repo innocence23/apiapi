@@ -8,9 +8,3 @@ type Product struct {
 	Price uint
 }
 
-type ProductQueryParam struct {
-	Code       string `json:"code,omitempty"`
-	Price      uint   `json:"price,omitempty"`
-	Pagination `json:"pagination,omitempty"`
-	OrderField `json:"order_field,omitempty"`
-}
