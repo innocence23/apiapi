@@ -28,6 +28,8 @@ func main() {
 	//test queue nsq
 	//queue.TestNsq()
 
-	r := router.Init()
+	injector := initProductAPI(database.DB)
+	r := router.Init(injector)
+
 	r.Run(":8899") // listen and serve on 0.0.0.0:8080 (for windows "localhost:8080")
 }

@@ -1,21 +1,20 @@
 package router
 
 import (
-	"apiapi/pkg/database"
+	"apiapi/app"
 
 	"github.com/gin-gonic/gin"
 )
 
 // Init router
-func Init() *gin.Engine {
+func Init(a *app.BllAPI) *gin.Engine {
 	r := gin.Default()
 
-	productAPI := initProductAPI(database.DB)
-	r.GET("/products", productAPI.FindAll)
-	r.GET("/products/:id", productAPI.FindByID)
-	r.POST("/products", productAPI.Create)
-	r.PUT("/products/:id", productAPI.Update)
-	r.DELETE("/products/:id", productAPI.Delete)
+	r.GET("/products", a.ProductAPI.FindAll)
+	r.GET("/products/:id", a.ProductAPI.FindByID)
+	r.POST("/products", a.ProductAPI.Create)
+	r.PUT("/products/:id", a.ProductAPI.Update)
+	r.DELETE("/products/:id", a.ProductAPI.Delete)
 
 	return r
 }

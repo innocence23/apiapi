@@ -3,10 +3,11 @@
 //go:generate wire
 //+build !wireinject
 
-package router
+package main
 
 import (
 	"apiapi/API"
+	"apiapi/app"
 	"apiapi/repository"
 	"apiapi/service"
 	"github.com/jinzhu/gorm"
@@ -14,9 +15,12 @@ import (
 
 // Injectors from wire.go:
 
-func initProductAPI(db *gorm.DB) *API.ProductAPI {
+func initProductAPI(db *gorm.DB) *app.BllAPI {
 	productRepository := repository.NewProductRepostiory(db)
 	productService := service.NewProductService(productRepository)
 	productAPI := API.NewProductAPI(productService)
-	return productAPI
+	bllAPI := &app.BllAPI{
+		ProductAPI: productAPI,
+	}
+	return bllAPI
 }
