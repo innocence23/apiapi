@@ -19,8 +19,12 @@ func initProductAPI(db *gorm.DB) *app.BllAPI {
 	productRepository := repository.NewProductRepostiory(db)
 	productService := service.NewProductService(productRepository)
 	productAPI := API.NewProductAPI(productService)
+	blogRepository := repository.NewBlogRepostiory(db)
+	blogService := service.NewBlogService(blogRepository)
+	blogAPI := API.NewBlogAPI(blogService)
 	bllAPI := &app.BllAPI{
 		ProductAPI: productAPI,
+		BlogAPI:    blogAPI,
 	}
 	return bllAPI
 }

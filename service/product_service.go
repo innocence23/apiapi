@@ -9,24 +9,24 @@ type ProductService struct {
 	ProductRepository *repository.ProductRepository
 }
 
-func NewProductService(p *repository.ProductRepository) *ProductService {
-	return &ProductService{ProductRepository: p}
+func NewProductService(z *repository.ProductRepository) *ProductService {
+	return &ProductService{ProductRepository: z}
 }
 
-func (p *ProductService) FindAll() []model.Product {
-	return p.ProductRepository.FindAll()
+func (z *ProductService) FindAll() []model.Product {
+	return z.ProductRepository.FindAll()
 }
 
-func (p *ProductService) FindByID(id uint) model.Product {
-	return p.ProductRepository.FindByID(id)
+func (z *ProductService) FindByID(id uint) model.Product {
+	return z.ProductRepository.FindByID(id)
 }
 
-func (p *ProductService) Save(product model.Product) model.Product {
-	p.ProductRepository.Save(product)
+func (z *ProductService) Save(product model.Product) model.Product {
+	z.ProductRepository.Save(product)
 
 	return product
 }
 
-func (p *ProductService) Delete(product model.Product) {
-	p.ProductRepository.Delete(product)
+func (z *ProductService) Delete(product model.Product) {
+	z.ProductRepository.Delete(product)
 }

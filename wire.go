@@ -16,6 +16,7 @@ import (
 func initProductAPI(db *gorm.DB) *app.BllAPI {
 	wire.Build(
 		repository.NewProductRepostiory, service.NewProductService, API.NewProductAPI,
+		repository.NewBlogRepostiory, service.NewBlogService, API.NewBlogAPI,
 		app.InjectorSet,
 	)
 	return new(app.BllAPI)

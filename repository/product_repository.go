@@ -14,26 +14,26 @@ func NewProductRepostiory(DB *gorm.DB) *ProductRepository {
 	return &ProductRepository{DB: DB}
 }
 
-func (p *ProductRepository) FindAll() []model.Product {
+func (z *ProductRepository) FindAll() []model.Product {
 	var products []model.Product
-	p.DB.Find(&products)
+	z.DB.Find(&products)
 
 	return products
 }
 
-func (p *ProductRepository) FindByID(id uint) model.Product {
+func (z *ProductRepository) FindByID(id uint) model.Product {
 	var product model.Product
-	p.DB.First(&product, id)
+	z.DB.First(&product, id)
 
 	return product
 }
 
-func (p *ProductRepository) Save(product model.Product) model.Product {
-	p.DB.Save(&product)
+func (z *ProductRepository) Save(product model.Product) model.Product {
+	z.DB.Save(&product)
 
 	return product
 }
 
-func (p *ProductRepository) Delete(product model.Product) {
-	p.DB.Delete(&product)
+func (z *ProductRepository) Delete(product model.Product) {
+	z.DB.Delete(&product)
 }

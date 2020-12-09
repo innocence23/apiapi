@@ -10,7 +10,7 @@ import (
 //var InjectorSet = wire.NewSet(wire.Struct(new(Injector), "*"))
 var InjectorSet = wire.NewSet(wire.Struct(new(BllAPI), "*"))
 
-
 type BllAPI struct {
 	ProductAPI *API.ProductAPI
+	BlogAPI    *API.BlogAPI
 }
