@@ -4,8 +4,8 @@
 package main
 
 import (
-	"apiapi/API"
 	"apiapi/app"
+	"apiapi/controller"
 	"apiapi/repository"
 	"apiapi/service"
 
@@ -15,8 +15,9 @@ import (
 
 func initProductAPI(db *gorm.DB) *app.BllAPI {
 	wire.Build(
-		repository.NewProductRepostiory, service.NewProductService, API.NewProductAPI,
-		repository.NewBlogRepostiory, service.NewBlogService, API.NewBlogAPI,
+		repository.RepostiorySet,
+		service.ServiceSet,
+		controller.ControllerSet,
 		app.InjectorSet,
 	)
 	return new(app.BllAPI)

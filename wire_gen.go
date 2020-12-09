@@ -6,8 +6,8 @@
 package main
 
 import (
-	"apiapi/API"
 	"apiapi/app"
+	"apiapi/controller"
 	"apiapi/repository"
 	"apiapi/service"
 	"github.com/jinzhu/gorm"
@@ -16,15 +16,27 @@ import (
 // Injectors from wire.go:
 
 func initProductAPI(db *gorm.DB) *app.BllAPI {
-	productRepository := repository.NewProductRepostiory(db)
-	productService := service.NewProductService(productRepository)
-	productAPI := API.NewProductAPI(productService)
-	blogRepository := repository.NewBlogRepostiory(db)
-	blogService := service.NewBlogService(blogRepository)
-	blogAPI := API.NewBlogAPI(blogService)
+	product := &repository.Product{
+		DB: db,
+	}
+	serviceProduct := &service.Product{
+		ProductRepository: product,
+	}
+	controllerProduct := &controller.Product{
+		ProductService: serviceProduct,
+	}
+	blog := &repository.Blog{
+		DB: db,
+	}
+	serviceBlog := &service.Blog{
+		BlogRepository: blog,
+	}
+	controllerBlog := &controller.Blog{
+		BlogService: serviceBlog,
+	}
 	bllAPI := &app.BllAPI{
-		ProductAPI: productAPI,
-		BlogAPI:    blogAPI,
+		ProductAPI: controllerProduct,
+		BlogAPI:    controllerBlog,
 	}
 	return bllAPI
 }

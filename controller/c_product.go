@@ -1,4 +1,4 @@
-package API
+package controller
 
 import (
 	"apiapi/dto"
@@ -8,31 +8,31 @@ import (
 	"strconv"
 
 	"github.com/gin-gonic/gin"
+	"github.com/google/wire"
 	"github.com/sirupsen/logrus"
 )
 
-type ProductAPI struct {
-	ProductService *service.ProductService
+// ProductSet 注入
+var ProductSet = wire.NewSet(wire.Struct(new(Product), "*"))
+
+type Product struct {
+	ProductService *service.Product
 }
 
-func NewProductAPI(z *service.ProductService) *ProductAPI {
-	return &ProductAPI{ProductService: z}
-}
-
-func (z *ProductAPI) FindAll(c *gin.Context) {
+func (z *Product) FindAll(c *gin.Context) {
 	products := z.ProductService.FindAll()
 
 	c.JSON(http.StatusOK, gin.H{"products": dto.ToProductDTOs(products)})
 }
 
-func (z *ProductAPI) FindByID(c *gin.Context) {
+func (z *Product) FindByID(c *gin.Context) {
 	id, _ := strconv.Atoi(c.Param("id"))
 	product := z.ProductService.FindByID(uint(id))
 
 	c.JSON(http.StatusOK, gin.H{"product": dto.ToProductDTO(product)})
 }
 
-func (z *ProductAPI) Create(c *gin.Context) {
+func (z *Product) Create(c *gin.Context) {
 	var ProductDTO dto.ProductDTO
 	err := c.BindJSON(&ProductDTO)
 	if err != nil {
@@ -46,7 +46,7 @@ func (z *ProductAPI) Create(c *gin.Context) {
 	c.JSON(http.StatusOK, gin.H{"product": dto.ToProductDTO(createdProduct)})
 }
 
-func (z *ProductAPI) Update(c *gin.Context) {
+func (z *Product) Update(c *gin.Context) {
 	var ProductDTO dto.ProductDTO
 	err := c.BindJSON(&ProductDTO)
 	if err != nil {
@@ -69,7 +69,7 @@ func (z *ProductAPI) Update(c *gin.Context) {
 	c.Status(http.StatusOK)
 }
 
-func (z *ProductAPI) Delete(c *gin.Context) {
+func (z *Product) Delete(c *gin.Context) {
 	id, _ := strconv.Atoi(c.Param("id"))
 	product := z.ProductService.FindByID(uint(id))
 	if product == (model.Product{}) {

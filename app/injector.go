@@ -1,7 +1,7 @@
 package app
 
 import (
-	"apiapi/API"
+	"apiapi/controller"
 
 	"github.com/google/wire"
 )
@@ -11,6 +11,6 @@ import (
 var InjectorSet = wire.NewSet(wire.Struct(new(BllAPI), "*"))
 
 type BllAPI struct {
-	ProductAPI *API.ProductAPI
-	BlogAPI    *API.BlogAPI
+	ProductAPI *controller.Product
+	BlogAPI    *controller.Blog
 }
