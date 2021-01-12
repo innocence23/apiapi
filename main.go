@@ -18,6 +18,7 @@ func main() {
 
 	//初始化db
 	database.Init()
+	defer database.CloseDB()
 
 	//初始化表
 	database.DB.AutoMigrate(&model.Product{})

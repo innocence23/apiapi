@@ -34,9 +34,19 @@ func initProductAPI(db *gorm.DB) *app.BllAPI {
 	controllerBlog := &controller.Blog{
 		BlogService: serviceBlog,
 	}
+	tag := &repository.Tag{
+		DB: db,
+	}
+	serviceTag := &service.Tag{
+		TagRepository: tag,
+	}
+	controllerTag := &controller.Tag{
+		TagService: serviceTag,
+	}
 	bllAPI := &app.BllAPI{
 		ProductAPI: controllerProduct,
 		BlogAPI:    controllerBlog,
+		TagAPI:     controllerTag,
 	}
 	return bllAPI
 }

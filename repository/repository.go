@@ -6,4 +6,5 @@ import "github.com/google/wire"
 var RepostiorySet = wire.NewSet(
 	ProductSet,
 	BlogSet,
+	TagSet,
 )

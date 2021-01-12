@@ -13,4 +13,5 @@ var InjectorSet = wire.NewSet(wire.Struct(new(BllAPI), "*"))
 type BllAPI struct {
 	ProductAPI *controller.Product
 	BlogAPI    *controller.Blog
+	TagAPI     *controller.Tag
 }

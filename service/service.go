@@ -6,4 +6,5 @@ import "github.com/google/wire"
 var ServiceSet = wire.NewSet(
 	ProductSet,
 	BlogSet,
+	TagSet,
 )
