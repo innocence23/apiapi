@@ -6,7 +6,8 @@ import (
 	"github.com/spf13/viper"
 )
 
-var C *Config // C 全局配置(需要先执行MustLoad，否则拿不到配置)
+// C 全局配置(需要先执行MustLoad，否则拿不到配置)
+var C *Config
 
 // Config 配置参数
 type Config struct {
@@ -91,7 +92,7 @@ type Log struct {
 	HookMaxBuffer int
 }
 
-// NSQ配置参数
+// NSQ 配置参数
 type NSQ struct {
 	Addr    string
 	Topic   string
@@ -108,7 +109,7 @@ type Redis struct {
 	IdleTimeout int
 }
 
-// Gorm gorm配置参数 mysql配置参数
+// DB Gorm gorm配置参数 mysql配置参数
 type DB struct {
 	Debug             bool
 	Type              string
